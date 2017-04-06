@@ -14,7 +14,7 @@ function BitfinexFactory ($rootScope) {
 
       const wss = new WebSocket('wss://api.bitfinex.com/ws/')
       wss.onmessage = function (msg) {
-        let data = msg.data
+        let data = JSON.parse(msg.data)
         if (data[1] !== "hb") {
           $rootScope.$apply(function () {
             lastData.push(data)
