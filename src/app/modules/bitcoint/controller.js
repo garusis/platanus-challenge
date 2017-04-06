@@ -5,8 +5,10 @@
 import module from "./config"
 import service from "./service"
 
-BitcoinIndicatorController.inject = ["$scope", "BitfinexService"]
-function BitcoinIndicatorController ($scope, BitfinexService) {
+BitcoinIndicatorController.inject = ["$scope", "Bitfinex"]
+function BitcoinIndicatorController ($scope, Bitfinex) {
+
+  $scope.indicatorData = Bitfinex.subscribeTicker("tBTCUSD")
 
 }
 

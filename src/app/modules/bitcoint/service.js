@@ -4,22 +4,37 @@
 import ws from "ws"
 import module from "./config"
 
-BitfinexService.inject = ["$rootScope"]
-function BitfinexService ($rootScope) {
+BitfinexFactory.inject = ["$rootScope"]
+function BitfinexFactory ($rootScope) {
 
-  console.log("here")
+  return {
+    subscribeTicker: function (symbol) {
 
-  const wss = new WebSocket('wss://api.bitfinex.com/ws/')
-  wss.onmessage = (msg) => console.log(msg.data)
-  wss.onopen = () => {
-    var msg = JSON.stringify({
-      event: 'subscribe',
-      channel: 'ticker',
-      symbol: 'tBTCUSD'
-    })
+      const lastData = []
 
-    wss.send(msg)
+      const wss = new WebSocket('wss://api.bitfinex.com/ws/')
+      wss.onmessage = function (msg) {
+        let data = msg.data
+        if (data[1] !== "hb") {
+          $rootScope.$apply(function () {
+            lastData.push(data)
+          })
+        }
+      }
+
+      wss.onopen = function () {
+        wss.send(JSON.stringify({
+          event: 'subscribe',
+          channel: 'ticker',
+          symbol: symbol
+        }))
+      }
+
+      return lastData
+
+    }
   }
+
 }
 
-module.service("BitfinexService", BitfinexService)
+module.factory("Bitfinex", BitfinexFactory)
