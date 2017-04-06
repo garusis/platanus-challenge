@@ -1,7 +1,7 @@
 /**
  * Created by garusis on 06/04/17.
  */
-import ws from "ws"
+import _ from "lodash"
 import module from "./config"
 
 BitfinexFactory.inject = ["$rootScope"]
@@ -15,7 +15,7 @@ function BitfinexFactory ($rootScope) {
       const wss = new WebSocket('wss://api.bitfinex.com/ws/')
       wss.onmessage = function (msg) {
         let data = JSON.parse(msg.data)
-        if (data[1] !== "hb") {
+        if (_.isArray(data) && data[1] !== "hb") {
           $rootScope.$apply(function () {
             lastData.push(data)
           })
