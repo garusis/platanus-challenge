@@ -16,8 +16,13 @@ function BitfinexFactory ($rootScope) {
       wss.onmessage = function (msg) {
         let data = JSON.parse(msg.data)
         if (_.isArray(data) && data[1] !== "hb") {
+          data = {BID: data[1], BID_SIZE: data[2], ASK: data[3], ASK_SIZE: data[4]}
+
           $rootScope.$apply(function () {
-            lastData.push(data)
+            lastData.unshift(data)
+            if (lastData.length > 5) {
+              lastData.pop()
+            }
           })
         }
       }

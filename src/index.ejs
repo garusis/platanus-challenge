@@ -4,7 +4,24 @@
 
 <div ng-controller="BitcoinIndicatorController as bitcIndCtrl">
 
-  {{indicatorData}}
+  <table>
+    <thead>
+      <tr>
+        <th>Max. Precio Compra</th>
+        <th>Min. Precio Venta</th>
+        <th>MaxPC - MinPV</th>
+        <th>Compradores - Vendedores</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="entry in indicatorData">
+      <td>{{entry.BID}}</td>
+      <td>{{entry.ASK}}</td>
+      <td>{{entry.BID - entry.ASK}}</td>
+      <td>{{entry.BID_SIZE - entry.ASK_SIZE}}</td>
+    </tr>
+    </tbody>
+  </table>
 
 </div>
 
