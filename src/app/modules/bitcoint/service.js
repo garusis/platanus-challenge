@@ -7,17 +7,19 @@ import module from "./config"
 BitfinexService.inject = ["$rootScope"]
 function BitfinexService ($rootScope) {
 
-  const w = new ws('wss://api.bitfinex.com/ws/v2')
+  console.log("here")
 
-  w.on('message', (msg) => console.log(msg))
+  const wss = new WebSocket('wss://api.bitfinex.com/ws/')
+  wss.onmessage = (msg) => console.log(msg.data)
+  wss.onopen = () => {
+    var msg = JSON.stringify({
+      event: 'subscribe',
+      channel: 'ticker',
+      symbol: 'tBTCUSD'
+    })
 
-  var msg = JSON.stringify({
-    event: 'subscribe',
-    channel: 'ticker',
-    symbol: 'tBTCUSD'
-  })
-
-  w.on('open', () => w.send(msg))
+    wss.send(msg)
+  }
 }
 
 module.service("BitfinexService", BitfinexService)
