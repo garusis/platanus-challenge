@@ -8,7 +8,7 @@ const path = require("path")
 const metadata = require("./webpack/commonConfig").object
 const webpackConfig = require("./webpack.config")
 
-webpackConfig.entry.app.unshift(`webpack-dev-server/client?http://127.0.0.1:${metadata.DEV_PORT}/`)
+webpackConfig.entry.app.unshift(`webpack-dev-server/client?http://127.0.0.1:3000/`)
 
 const compiler = webpack(webpackConfig)
 const server = new WebpackDevServer(compiler, {
@@ -20,7 +20,7 @@ const server = new WebpackDevServer(compiler, {
     aggregateTimeout: 300,
     poll: 1000
   }
-});
+})
 server.listen(metadata.PORT, function () {
   console.log(`Server listening at ${metadata.PORT}`)
 });

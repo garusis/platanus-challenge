@@ -1,15 +1,15 @@
 /**
  * Created by garusis on 06/04/17.
  */
-import io from "socket.io-client"
+import ws from "ws"
 import module from "./config"
 
 BitfinexService.inject = ["$rootScope"]
 function BitfinexService ($rootScope) {
 
-  let socket = io('wss://api.bitfinex.com/ws/v2')
+  const w = new ws('wss://api.bitfinex.com/ws/v2')
 
-  socket.on('message', (msg) => console.log(msg))
+  w.on('message', (msg) => console.log(msg))
 
   var msg = JSON.stringify({
     event: 'subscribe',
@@ -17,8 +17,7 @@ function BitfinexService ($rootScope) {
     symbol: 'tBTCUSD'
   })
 
-  socket.on('open', () => socket.send(msg))
-
+  w.on('open', () => w.send(msg))
 }
 
 module.service("BitfinexService", BitfinexService)

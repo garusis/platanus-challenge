@@ -5,9 +5,9 @@
 import module from "./config"
 import service from "./service"
 
-BitcoinIndicator.inject = ["$scope", "BitfinexService"]
-function BitcoinIndicator ($scope, BitfinexService) {
+BitcoinIndicatorController.inject = ["$scope", "BitfinexService"]
+function BitcoinIndicatorController ($scope, BitfinexService) {
 
 }
 
-module.controller("BitcoinIndicator", BitcoinIndicator)
+module.controller("BitcoinIndicatorController", BitcoinIndicatorController)

@@ -40,11 +40,11 @@
     "less-loader": "^4.0.2",
     "lodash": "^4.17.4",
     "node-libs-browser": "^2.0.0",
-    "socket.io-client": "^1.7.3",
     "strip-loader": "^0.1.2",
     "style-loader": "^0.16.0",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2",
+    "ws": "^2.2.3",
     "yargs": "^7.0.2"
   }
 }
