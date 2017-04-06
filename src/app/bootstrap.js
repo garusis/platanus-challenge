@@ -2,6 +2,3 @@
 import {} from "./modules"
 import {} from "./assets/css"
 
-
-
-export default mainModule
