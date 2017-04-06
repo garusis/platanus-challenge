@@ -22,6 +22,7 @@
   "author": "Marcos J. Alvarez <garusis@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "angular": "^1.6.4",
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
