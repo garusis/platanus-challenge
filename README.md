@@ -5,6 +5,11 @@
 ## Requerimientos
 
   Este proyecto solo requiere tener instalado Node v4 o superior o Docker.
+  
+## ATENCION!
+  Debido a problemas de CORS al usar la API de bitfinex desde un entorno local sin https, se recomienda altamente
+  usar algun tipo de extension o complemento para el navegador que permita deshabilitar CORS. En mi caso, use 
+  CORS Toggle desde Google Chrome.
 
 ## Ejecutar con Docker
   Una version con los mas recientes cambios de este proyecto se encuentra en Docker-Hub por lo que puede 
