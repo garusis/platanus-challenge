@@ -15,7 +15,7 @@
     "ps:exit": "npm run ps -- --filter \"status=exited\"",
     "bash": "docker exec -i -t $(npm run -s ps:run -- --latest) bash",
     "logs": "docker logs $(npm run -s ps -- --latest)",
-    "runc": "docker run -d -p 3000:3000 --name banana-bitcoinapp"
+    "runc": "docker run -d -p 3000:3000 --name banana-bitcoinapp garusis/banana-bitcoin"
   },
   "author": "Marcos J. Alvarez <garusis@gmail.com>",
   "license": "MIT",
