@@ -21,7 +21,7 @@
 
   Si ya ha clonado previamente el repositorio, puede pararse en la raiz del proyecto y usar en su lugar
 ```
-  docker run runc
+  npm run runc
 ```
 
 ## Ejecutar sin Docker
@@ -30,7 +30,7 @@
 
 ## Generar una nueva imagen con Docker
   Si desea generarse una imagen desde el repositorio, primero debe clonarse en un directorio local, 
-  y luego desde una terminal ejecutar `npm run buildc`. Esta imagen podra ejecutarse posteriormente por medio de `docker run runc`
+  y luego desde una terminal ejecutar `npm run buildc`. Esta imagen podra ejecutarse posteriormente por medio de `npm run runc`
 
 ## Otras tareas
   Se han añadido tareas que permiten facilmente detener, eliminar, acceder a logs y bash interna de los contenedores generados.
